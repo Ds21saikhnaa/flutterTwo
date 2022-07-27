@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:test/ui/common/my_button.dart';
 import 'package:test/ui/common/my_input.dart';
 import 'package:test/ui/common/pro_flie.dart';
 
@@ -15,45 +16,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
-          
             child: Container(
-      color: Colors.white,
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Profile(),
-          // Container(
-          //   decoration: BoxDecoration(
-          //     color: Colors.green,
-          //     border: Border.all(
-          //       width: 1,
-          //       color: Colors.black,
-          //     ),
-          //     borderRadius: BorderRadius.circular(10),
-          //   ),
-          //   margin: EdgeInsets.only(
-          //     left: 20,
-          //     right: 20,
-          //   ),
-          //   child: Column(
-          //     children: [
-          //     ],
-          //   ),
-          // ),
-                MyInput(
-                  title: "Full Name",
-                  keyboardType: TextInputType.number,
-                ),
-                MyInput(title: "Email"),
-                MyInput(title: "Phone Number"),
-                MyInput(title: "Gender"),
-                MyInput(title: "Location"),
-        ],
-      ),
-    ))
-    );
+          color: Colors.white,
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Profile(),
+              MyInput(
+                title: "Full Name",
+                keyboardType: TextInputType.number,
+              ),
+              MyInput(title: "Email"),
+              MyInput(title: "Phone Number"),
+              MyInput(title: "Gender"),
+              MyInput(title: "Location"),
+              MyButton()
+            ],
+          ),
+        )));
   }
 }

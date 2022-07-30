@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:test/ui/common/my_button.dart';
 import 'package:test/ui/common/my_input.dart';
 import 'package:test/ui/common/pro_flie.dart';
+import 'package:test/utils/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
               MyInput(title: "Phone Number"),
               MyInput(title: "Gender"),
               MyInput(title: "Location"),
-              MyButton()
+              MyButton(
+                text: "go Login",
+                route: loginRoute,
+              )
             ],
           ),
         )));

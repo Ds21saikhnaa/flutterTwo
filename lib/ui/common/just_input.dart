@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
-class MyInput extends StatefulWidget {
+class JustInput extends StatefulWidget {
   final String? title;
   final TextInputType keyboardType;
   String? text;
-  MyInput({
+  JustInput({
     Key? key,
     this.title,
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
-//  const MyInput({Key? key}) : super(key: key);
+//  const JustInput({Key? key}) : super(key: key);
 
   @override
-  State<MyInput> createState() => _MyInputState();
+  State<JustInput> createState() => _JustInputState();
 }
 
-class _MyInputState extends State<MyInput> {
+class _JustInputState extends State<JustInput> {
   @override
   String _userName = '';
   bool _hasFocus = false;
@@ -31,35 +31,31 @@ class _MyInputState extends State<MyInput> {
 
   Widget build(BuildContext context) {
     return Container(
+        color: Color.fromARGB(255, 250, 248, 251),
         margin: EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.title! + "*"),
             Container(
               decoration: BoxDecoration(
                 // color: Colors.green,
                 border: Border.all(
                   width: 1,
                   color: _hasFocus
-                      ? Colors.red
+                      ? Colors.black
                       : _userName.isEmpty
-                          ? Colors.black
-                          : Colors.red,
+                          ? Color.fromARGB(255, 244, 242, 242)
+                          : Colors.black,
                 ),
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(5),
               ),
-              // margin: EdgeInsets.only(
-              //   // left: 20,
-              //   // right: 20,
-              //   // top: 20
-              // ),
               padding: EdgeInsets.only(
                 left: 20,
                 right: 20,
               ),
               child: TextField(
-                keyboardType: TextInputType.number,
+                style: TextStyle(color: Colors.black),
+                keyboardType: TextInputType.text,
                 onChanged: (value) {
                   // text = value;
                   _userName = value;
@@ -68,9 +64,9 @@ class _MyInputState extends State<MyInput> {
                 },
                 focusNode: _focusNode,
                 decoration: InputDecoration(
-                  hintText: widget.title,
-                  // border: InputBorder.none,
-                ),
+                    hintText: widget.title, fillColor: Colors.blue
+                    // border: InputBorder.none,
+                    ),
               ),
             ),
           ],

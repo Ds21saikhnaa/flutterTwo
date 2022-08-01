@@ -39,12 +39,12 @@ class _MyButtonState extends State<MyButton> {
             height: 44,
             width: 343,
             alignment: Alignment.center,
-            child: Text(widget.text!),
+            child: Text(widget.text!, style: TextStyle(color: Colors.white)),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: _isSelected
                   ? Color.fromARGB(255, 213, 140, 135)
-                  : Color.fromARGB(255, 54, 190, 244),
+                  : Color.fromARGB(255, 54, 152, 244),
             ),
           ),
         ),

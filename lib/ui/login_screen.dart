@@ -29,12 +29,26 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             JustInput(title: "Email or username"),
             JustInput(title: "password"),
+            Container(
+              child: Text("forget password",
+                  style: TextStyle(color: Color.fromARGB(255, 38, 111, 229))),
+              margin: EdgeInsets.only(left: 200, top: 20),
+            ),
             // MyInput(title: "Email or username"),
             // MyInput(title: "password"),
             MyButton(
               text: "Log in",
               route: homeRoute,
             ),
+            Container(
+              child: Row(
+                children: [
+                  Text("Log in with Facebook",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 38, 111, 229)))
+                ],
+              ),
+            )
           ]),
         ),
       ),

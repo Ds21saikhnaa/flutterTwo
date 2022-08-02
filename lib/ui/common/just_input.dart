@@ -64,7 +64,9 @@ class _JustInputState extends State<JustInput> {
                 },
                 focusNode: _focusNode,
                 decoration: InputDecoration(
-                    hintText: widget.title, fillColor: Colors.blue
+                    border: InputBorder.none,
+                    hintText: widget.title,
+                    fillColor: Colors.blue
                     // border: InputBorder.none,
                     ),
               ),

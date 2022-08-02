@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -30,22 +32,33 @@ class _LoginScreenState extends State<LoginScreen> {
             JustInput(title: "Email or username"),
             JustInput(title: "password"),
             Container(
-              child: Text("forget password",
-                  style: TextStyle(color: Color.fromARGB(255, 38, 111, 229))),
-              margin: EdgeInsets.only(left: 200, top: 20),
+              // onTap:(){
+              //   print("Clicked");
+              // }
+              alignment: FractionalOffset.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  print("object");
+                },
+                child: Text(
+                  'Forgot password?',
+                  style: TextStyle(color: Color.fromARGB(255, 38, 111, 229)),
+                ),
+              ),
             ),
-            // MyInput(title: "Email or username"),
-            // MyInput(title: "password"),
             MyButton(
               text: "Log in",
               route: homeRoute,
             ),
             Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("Log in with Facebook",
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 38, 111, 229)))
+                  Text(
+                    "Log in with Facebook",
+                    //textAlign: TextAlign.end,
+                    style: TextStyle(color: Color.fromARGB(255, 38, 111, 229)),
+                  )
                 ],
               ),
             )

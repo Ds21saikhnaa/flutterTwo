@@ -1,11 +1,11 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/foundation/key.dart';
+// import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/ui/common/just_input.dart';
 import 'package:test/ui/common/my_button.dart';
-import 'package:test/ui/common/my_input.dart';
+// import 'package:test/ui/common/my_input.dart';
 import 'package:test/utils/routes.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           color: Colors.white,
           child: Column(children: [
             Container(
-              padding: EdgeInsets.only(top: 168),
+              padding: const EdgeInsets.only(top: 168),
               // color: Colors.grey,
               child: Image.asset("assets/images/Logo.png"),
             ),
@@ -40,24 +40,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   print("object");
                 },
-                child: Text(
+                child: const Text(
                   'Forgot password?',
-                  style: TextStyle(color: Color.fromARGB(255, 38, 111, 229)),
+                  style: TextStyle(color: Color(0xFF3797EF)),
                 ),
               ),
             ),
-            MyButton(
+            const MyButton(
               text: "Log in",
-              route: homeRoute,
+              route: editUserRoute,
             ),
             Container(
+              margin: const EdgeInsets.only(top: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(
+                    Icons.facebook,
+                    color: Colors.blue,
+                  ),
                   Text(
                     "Log in with Facebook",
-                    //textAlign: TextAlign.end,
-                    style: TextStyle(color: Color.fromARGB(255, 38, 111, 229)),
+                    // textAlign: TextAlign.end,
+                    style: TextStyle(color: Color(0xFF3797EF)),
                   )
                 ],
               ),

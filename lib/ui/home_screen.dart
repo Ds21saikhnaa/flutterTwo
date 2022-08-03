@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test/ui/common/my_button.dart';
-import 'package:test/ui/common/my_input.dart';
-import 'package:test/ui/common/pro_flie.dart';
-import 'package:test/utils/routes.dart';
+// import 'package:flutter/src/foundation/key.dart';
+// import 'package:flutter/src/widgets/framework.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,33 +10,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _text = "Hello world";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SafeArea(
-            child: Container(
-          color: Colors.white,
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Profile(),
-              MyInput(
-                title: "Full Name",
-                keyboardType: TextInputType.number,
-              ),
-              MyInput(title: "Email"),
-              MyInput(title: "Phone Number"),
-              MyInput(title: "Gender"),
-              MyInput(title: "Location"),
-              MyButton(
-                text: "go Login",
-                route: loginRoute,
-              )
-            ],
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Demo'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Calls',
           ),
-        )));
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+        ],
+      ),
+    );
   }
 }

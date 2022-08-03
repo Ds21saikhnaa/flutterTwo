@@ -18,7 +18,7 @@ class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 40),
+      margin: EdgeInsets.only(top: 20),
       child: InkWell(
         // onTap: () {
         //   print("da");
@@ -44,7 +44,7 @@ class _MyButtonState extends State<MyButton> {
               borderRadius: BorderRadius.circular(5),
               color: _isSelected
                   ? Color.fromARGB(255, 213, 140, 135)
-                  : Color.fromARGB(255, 54, 152, 244),
+                  : Color(0xFF3797EF),
             ),
           ),
         ),

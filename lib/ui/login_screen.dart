@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: FractionalOffset.centerRight,
               child: TextButton(
                 onPressed: () {
-                  print("object");
+                  // print("object");
                 },
                 child: const Text(
                   'Forgot password?',
@@ -63,9 +63,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Log in with Facebook",
                     // textAlign: TextAlign.end,
                     style: TextStyle(color: Color(0xFF3797EF)),
-                  )
+                  ),
                 ],
               ),
+            ),
+            Row(
+              children: const <Widget>[
+                // Text("Book Name"),
+                // Text("Author name"),
+                Divider(
+                  color: Colors.black,
+                  // height: 20,
+                ),
+                // Text("OR"),
+              ],
             )
           ]),
         ),

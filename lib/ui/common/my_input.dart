@@ -18,7 +18,6 @@ class MyInput extends StatefulWidget {
 
 class _MyInputState extends State<MyInput> {
   @override
-  String _userName = '';
   bool _hasFocus = false;
   final FocusNode _focusNode = FocusNode();
   void initState() {
@@ -30,8 +29,9 @@ class _MyInputState extends State<MyInput> {
   }
 
   Widget build(BuildContext context) {
+    String _userName = "";
     return Container(
-        margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -40,7 +40,7 @@ class _MyInputState extends State<MyInput> {
               decoration: BoxDecoration(
                 // color: Colors.green,
                 border: Border.all(
-                  width: 1,
+                  width: 2,
                   color: _hasFocus
                       ? Colors.red
                       : _userName.isEmpty
@@ -54,7 +54,7 @@ class _MyInputState extends State<MyInput> {
               //   // right: 20,
               //   // top: 20
               // ),
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 20,
                 right: 20,
               ),

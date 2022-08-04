@@ -37,6 +37,7 @@ class _JustInputState extends State<JustInput> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              // color: Colors.blueAccent,
               decoration: BoxDecoration(
                 // color: Colors.green,
                 border: Border.all(
@@ -47,7 +48,7 @@ class _JustInputState extends State<JustInput> {
                           ? Color.fromARGB(255, 244, 242, 242)
                           : Colors.black,
                 ),
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(15),
               ),
               padding: EdgeInsets.only(
                 left: 20,

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:test/ui/edit_user_screen.dart';
-import 'package:test/ui/home_screen.dart';
-import 'package:test/ui/login_screen.dart';
+import 'package:test/ui/screens/edit_user_screen.dart';
+import 'package:test/ui/screens/home_screen.dart';
+import 'package:test/ui/screens/login_screen.dart';
 import 'package:test/utils/routes.dart';
 
 void main() {

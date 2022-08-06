@@ -31,8 +31,8 @@ class _JustInputState extends State<JustInput> {
 
   Widget build(BuildContext context) {
     return Container(
-        color: Color.fromARGB(255, 250, 248, 251),
-        margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+        color: const Color(0xA1FAFAFA),
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,12 +50,12 @@ class _JustInputState extends State<JustInput> {
                 ),
                 borderRadius: BorderRadius.circular(15),
               ),
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 20,
                 right: 20,
               ),
               child: TextField(
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
                 keyboardType: TextInputType.text,
                 onChanged: (value) {
                   // text = value;

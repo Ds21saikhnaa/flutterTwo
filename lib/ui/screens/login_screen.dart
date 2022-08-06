@@ -68,15 +68,24 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: const <Widget>[
                 // Text("Book Name"),
                 // Text("Author name"),
-                Divider(
-                  color: Colors.black,
-                  // height: 20,
-                ),
-                // Text("OR"),
+                Text("_________________",
+                    style: TextStyle(color: Color(0x33000000))),
+                Text("OR", style: TextStyle(color: Color(0x33000000))),
+                Text("_________________",
+                    style: TextStyle(color: Color(0x33000000))),
               ],
+            ),
+            InkWell(
+              onTap: () {
+                print("object");
+              },
+              child: const Text(
+                "Don't have an account? Sign up.",
+              ),
             )
           ]),
         ),

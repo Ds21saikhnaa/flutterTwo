@@ -31,7 +31,6 @@ class _MyButtonState extends State<MyButton> {
             Get.toNamed(widget.route!);
             // _isSelected = !_isSelected;
             // setState(() {});
-            print("Clicked");
             // Get.back();
             // Get.offAllNamed(secondRoute);
           },

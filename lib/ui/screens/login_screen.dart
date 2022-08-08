@@ -1,12 +1,14 @@
 // import 'dart:developer';
 
 import 'package:flutter/material.dart';
+// import 'package:get/instance_manager.dart';
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/ui/common/just_input.dart';
 import 'package:test/ui/common/my_button.dart';
 // import 'package:test/ui/common/my_input.dart';
 import 'package:test/utils/routes.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -32,9 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
             JustInput(title: "Email or username"),
             JustInput(title: "password"),
             Container(
-              // onTap:(){
-              //   print("Clicked");
-              // }
               alignment: FractionalOffset.centerRight,
               child: TextButton(
                 onPressed: () {
@@ -79,14 +78,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: Color(0x33000000))),
               ],
             ),
-            InkWell(
-              onTap: () {
-                print("object");
-              },
-              child: const Text(
-                "Don't have an account? Sign up.",
-              ),
-            )
+            Row(
+              children: [
+                const Text("Don't have an account?"),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(registerRoute);
+                  },
+                  child: const Text(
+                    "Sign up.",
+                  ),
+                )
+              ],
+            ),
           ]),
         ),
       ),

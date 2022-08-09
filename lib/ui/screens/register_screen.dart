@@ -22,10 +22,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Container(
           child: Column(
             children: [
+              Container(
+                padding: const EdgeInsets.only(top: 168),
+                // color: Colors.grey,
+                child: Image.asset("assets/images/Logo.png"),
+              ),
               JustInput(title: "Email or username"),
+              JustInput(title: "Username"),
               JustInput(title: "password"),
               const MyButton(
-                text: "Log in",
+                text: "Sign up",
                 route: loginRoute,
               ),
             ],

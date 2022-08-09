@@ -45,7 +45,7 @@ class _JustInputState extends State<JustInput> {
                   color: _hasFocus
                       ? Colors.black
                       : _userName.isEmpty
-                          ? Color.fromARGB(255, 244, 242, 242)
+                          ? const Color.fromARGB(255, 244, 242, 242)
                           : Colors.black,
                 ),
                 borderRadius: BorderRadius.circular(15),

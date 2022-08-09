@@ -1,14 +1,12 @@
-// import 'dart:developer';
+import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-// import 'package:get/instance_manager.dart';
-// import 'package:flutter/src/foundation/key.dart';
-// import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/ui/common/just_input.dart';
 import 'package:test/ui/common/my_button.dart';
-// import 'package:test/ui/common/my_input.dart';
 import 'package:test/utils/routes.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -78,12 +76,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: Color(0x33000000))),
               ],
             ),
+            //padd
             Row(
               children: [
                 const Text("Don't have an account?"),
                 InkWell(
-                  onTap: () {
-                    Get.toNamed(registerRoute);
+                  onTap: () async {
+                    var url =
+                        Uri.parse('http://localhost:8000/api/v1/users/login/');
+                    try {
+                      var response = await http.post(url,
+                          headers: {"Content-Type": "application/json"},
+                          body: jsonEncode(
+                              {'email': 'bat@gmail.com', 'password': '1234'}));
+                      print('Response status: ${response.statusCode}');
+                      print('Response body: ${response.body}');
+
+                      // if(isSuccess == true){
+                      //   Get.toNamed(registerRoute);
+                      // }
+                    } catch (e) {
+                      print("exception: ${e.toString()}");
+                    }
                   },
                   child: const Text(
                     "Sign up.",

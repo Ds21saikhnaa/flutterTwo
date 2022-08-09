@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         initialRoute: loginRoute,
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.grey),
         routes: <String, WidgetBuilder>{
           loginRoute: (context) => const LoginScreen(),
           registerRoute: (context) => const RegisterScreen(),

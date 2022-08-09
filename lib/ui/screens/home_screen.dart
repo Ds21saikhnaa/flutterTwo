@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:test/ui/pages/account.dart';
+import 'package:test/ui/pages/home.dart';
+import 'package:test/ui/pages/reels.dart';
+import 'package:test/ui/pages/search.dart';
+import 'package:test/ui/pages/shop.dart';
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
@@ -10,25 +15,47 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectIndex = 0;
+  void _navigateBottomNavbar(int num) {
+    _selectIndex = num;
+    setState(() {});
+  }
+
+  final List<Widget> _children = [
+    UserHome(),
+    Search(),
+    Reels(),
+    Shop(),
+    Account()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Demo'),
-      ),
+      body: _children[_selectIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        currentIndex: _selectIndex,
+        onTap: _navigateBottomNavbar,
+        type: BottomNavigationBarType.fixed,
+        items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            label: 'Calls',
+            icon: Icon(Icons.home),
+            label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Camera',
+            icon: Icon(Icons.search),
+            label: 'search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
+            icon: Icon(Icons.video_call),
+            label: 'reels',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shop),
+            label: 'shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'account',
           ),
         ],
       ),

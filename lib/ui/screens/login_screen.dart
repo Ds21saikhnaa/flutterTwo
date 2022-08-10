@@ -76,35 +76,41 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: Color(0x33000000))),
               ],
             ),
-            //padd
-            Row(
-              children: [
-                const Text("Don't have an account?"),
-                InkWell(
-                  onTap: () async {
-                    var url =
-                        Uri.parse('http://localhost:8000/api/v1/users/login/');
-                    try {
-                      var response = await http.post(url,
-                          headers: {"Content-Type": "application/json"},
-                          body: jsonEncode(
-                              {'email': 'bat@gmail.com', 'password': '1234'}));
-                      print('Response status: ${response.statusCode}');
-                      print('Response body: ${response.body}');
+            Padding(
+              padding: EdgeInsets.only(left: 100, top: 50),
+              child: Row(
+                children: [
+                  const Text("Don't have an account?",
+                      style: TextStyle(color: Colors.grey)),
+                  InkWell(
+                    onTap: () async {
+                      var url = Uri.parse(
+                          'http://localhost:8000/api/v1/users/login/');
+                      try {
+                        var response = await http.post(url,
+                            headers: {"Content-Type": "application/json"},
+                            body: jsonEncode({
+                              'email': 'bat@gmail.com',
+                              'password': '1234'
+                            }));
+                        print('Response status: ${response.statusCode}');
+                        print('Response body: ${response.body}');
 
-                      // if(isSuccess == true){
-                      //   Get.toNamed(registerRoute);
-                      // }
-                    } catch (e) {
-                      print("exception: ${e.toString()}");
-                    }
-                  },
-                  child: const Text(
-                    "Sign up.",
-                  ),
-                )
-              ],
-            ),
+                        // if(isSuccess == true){
+                        //   Get.toNamed(registerRoute);
+                        // }
+                      } catch (e) {
+                        print("exception: ${e.toString()}");
+                      }
+                    },
+                    child: const Text(
+                      "Sign up.",
+                      style: TextStyle(color: Color(0xFF3797EF)),
+                    ),
+                  )
+                ],
+              ),
+            )
           ]),
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:test/ui/screens/edit_user_screen.dart';
 import 'package:test/ui/screens/home_screen.dart';
 import 'package:test/ui/screens/login_screen.dart';
 import 'package:test/ui/screens/register_screen.dart';
+import 'package:test/ui/screens/splash_screen.dart';
 import 'package:test/utils/routes.dart';
 
 void main() {
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        initialRoute: loginRoute,
+        initialRoute: splashRoute,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.grey),
         routes: <String, WidgetBuilder>{
+          splashRoute: (context) => const SplashScreen(),
           loginRoute: (context) => const LoginScreen(),
           registerRoute: (context) => const RegisterScreen(),
           homeRoute: (context) => const HomeScreen(),

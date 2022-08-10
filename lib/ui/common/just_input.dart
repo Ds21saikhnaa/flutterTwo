@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class JustInput extends StatefulWidget {
   final String? title;
+  String? inVal;
   final TextInputType keyboardType;
   String? text;
   JustInput({
     Key? key,
     this.title,
+    this.inVal,
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
 //  const JustInput({Key? key}) : super(key: key);
@@ -60,6 +62,7 @@ class _JustInputState extends State<JustInput> {
                 onChanged: (value) {
                   // text = value;
                   _userName = value;
+                  widget.inVal = value;
                   // print("value: $value");
                   setState(() {});
                 },

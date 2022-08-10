@@ -16,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // color: Colors.grey,
               child: Image.asset("assets/images/Logo.png"),
             ),
-            JustInput(title: "Email or username"),
+            JustInput(title: "Email or username", inVal: name),
             JustInput(title: "password"),
             Container(
               alignment: FractionalOffset.centerRight,
@@ -45,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const MyButton(
               text: "Log in",
-              route: editUserRoute,
+              route: homeRoute,
             ),
             Container(
               margin: const EdgeInsets.only(top: 15),
@@ -90,12 +91,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         var response = await http.post(url,
                             headers: {"Content-Type": "application/json"},
                             body: jsonEncode({
-                              'email': 'bat@gmail.com',
+                              'email': 'bold@gmail.com',
                               'password': '1234'
                             }));
-                        print('Response status: ${response.statusCode}');
-                        print('Response body: ${response.body}');
-
+                        print("da $name");
+                        // print('Response status: ${response.statusCode}');
+                        // print('Response body: ${response.body}');
+                        // print(response.body.fromJson);
                         // if(isSuccess == true){
                         //   Get.toNamed(registerRoute);
                         // }

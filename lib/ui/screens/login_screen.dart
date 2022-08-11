@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:test/ui/common/just_input.dart';
@@ -17,6 +17,27 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   String name = "";
+  String password = "";
+  void logInFunction() async {
+    var url = Uri.parse('http://localhost:8000/api/v1/users/login/');
+    try {
+      var response = await http.post(url,
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode({'email': name, 'password': password}));
+      // print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      var extractedData = Map<String, dynamic>.from(jsonDecode(response.body));
+      print("asd: ${extractedData['success']}");
+
+      // print(response.body.fromJson);
+      // if(isSuccess == true){
+      //   Get.toNamed(registerRoute);
+      // }
+    } catch (e) {
+      print("exception: ${e.toString()}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +51,18 @@ class _LoginScreenState extends State<LoginScreen> {
               // color: Colors.grey,
               child: Image.asset("assets/images/Logo.png"),
             ),
-            JustInput(title: "Email or username", inVal: name),
-            JustInput(title: "password"),
+            JustInput(
+              title: "Email or username",
+              onChanged: (text) {
+                name = text;
+              },
+            ),
+            JustInput(
+              title: "password",
+              onChanged: (text) {
+                password = text;
+              },
+            ),
             Container(
               alignment: FractionalOffset.centerRight,
               child: TextButton(
@@ -44,10 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            const MyButton(
-              text: "Log in",
-              route: homeRoute,
-            ),
+            MyButton(text: "Log in", onPressed: logInFunction),
             Container(
               margin: const EdgeInsets.only(top: 15),
               child: Row(
@@ -78,32 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 100, top: 50),
+              padding: const EdgeInsets.only(left: 100, top: 50),
               child: Row(
                 children: [
                   const Text("Don't have an account?",
                       style: TextStyle(color: Colors.grey)),
                   InkWell(
-                    onTap: () async {
-                      var url = Uri.parse(
-                          'http://localhost:8000/api/v1/users/login/');
-                      try {
-                        var response = await http.post(url,
-                            headers: {"Content-Type": "application/json"},
-                            body: jsonEncode({
-                              'email': 'bold@gmail.com',
-                              'password': '1234'
-                            }));
-                        print("da $name");
-                        // print('Response status: ${response.statusCode}');
-                        // print('Response body: ${response.body}');
-                        // print(response.body.fromJson);
-                        // if(isSuccess == true){
-                        //   Get.toNamed(registerRoute);
-                        // }
-                      } catch (e) {
-                        print("exception: ${e.toString()}");
-                      }
+                    onTap: () {
+                      Get.toNamed(registerRoute);
                     },
                     child: const Text(
                       "Sign up.",

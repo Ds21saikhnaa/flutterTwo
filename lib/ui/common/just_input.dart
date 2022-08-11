@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 class JustInput extends StatefulWidget {
   final String? title;
   String? inVal;
+  String? name;
+  final Function(String)? onChanged;
   final TextInputType keyboardType;
   String? text;
   JustInput({
     Key? key,
     this.title,
     this.inVal,
+    this.onChanged,
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
 //  const JustInput({Key? key}) : super(key: key);
@@ -19,10 +22,11 @@ class JustInput extends StatefulWidget {
 }
 
 class _JustInputState extends State<JustInput> {
-  @override
   String _userName = '';
   bool _hasFocus = false;
   final FocusNode _focusNode = FocusNode();
+
+  @override
   void initState() {
     super.initState();
     _focusNode.addListener(() {
@@ -31,6 +35,7 @@ class _JustInputState extends State<JustInput> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
         color: const Color(0xA1FAFAFA),
@@ -59,13 +64,7 @@ class _JustInputState extends State<JustInput> {
               child: TextField(
                 style: const TextStyle(color: Colors.black),
                 keyboardType: TextInputType.text,
-                onChanged: (value) {
-                  // text = value;
-                  _userName = value;
-                  widget.inVal = value;
-                  // print("value: $value");
-                  setState(() {});
-                },
+                onChanged: widget.onChanged,
                 focusNode: _focusNode,
                 decoration: InputDecoration(
                     border: InputBorder.none,

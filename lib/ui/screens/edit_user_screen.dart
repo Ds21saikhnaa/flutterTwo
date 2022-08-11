@@ -35,11 +35,9 @@ class _EditUserScreenState extends State<EditUserScreen> {
               MyInput(title: "Location"),
               const MyButton(
                 text: "go home",
-                route: homeRoute,
               ),
               const MyButton(
                 text: "go Login",
-                route: loginRoute,
               )
             ],
           ),

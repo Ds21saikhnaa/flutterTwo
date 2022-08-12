@@ -14,6 +14,10 @@ class SpManager {
     await sharedPreference.setString(accessTokenKey, token);
   }
 
+  delete() async {
+    await sharedPreference.clear();
+  }
+
   Future<String> getAccessToken() async {
     String? accessToken = sharedPreference.getString(accessTokenKey);
     return accessToken ?? '';

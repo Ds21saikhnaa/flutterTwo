@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:test/ui/common/just_input.dart';
 import 'package:test/ui/common/my_button.dart';
-import 'package:test/utils/routes.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:test/utils/routes.dart';
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
@@ -26,12 +27,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           headers: {"Content-Type": "application/json"},
           body:
               jsonEncode({'email': email, 'name': name, 'password': password}));
-      // print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      // print(response.body.fromJson);
-      // if(isSuccess == true){
-      //   Get.toNamed(registerRoute);
-      // }
     } catch (e) {
       print("exception: ${e.toString()}");
     }
@@ -46,6 +41,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Container(
           child: Column(
             children: [
+              InkWell(
+                onTap: (() => Get.toNamed(loginRoute)),
+                child: const Text("back"),
+              ),
               Container(
                 padding: const EdgeInsets.only(top: 168),
                 // color: Colors.grey,

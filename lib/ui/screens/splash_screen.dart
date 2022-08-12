@@ -20,9 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
       SpManager sharedPreference = SpManager();
       await sharedPreference.init();
       String accessToken = await sharedPreference.getAccessToken();
-      sharedPreference.saveAccessToken("");
+      //sharedPreference.saveAccessToken("");
       print("accessToken: $accessToken");
-
       Get.offAllNamed(accessToken.isNotEmpty ? homeRoute : loginRoute);
     });
   }

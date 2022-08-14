@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/foundation/key.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+import 'package:test/ui/common/post.dart';
 import 'package:test/ui/common/stories.dart';
 
 class UserHome extends StatefulWidget {
@@ -23,7 +24,7 @@ class _UserHomeState extends State<UserHome> {
           children: [
             Text("Instagram", style: TextStyle(color: Colors.black)),
             Row(
-              children: [
+              children: const [
                 Icon(Icons.add),
                 Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -44,7 +45,17 @@ class _UserHomeState extends State<UserHome> {
                   itemCount: widget.people.length,
                   itemBuilder: (context, index) {
                     return Stories(name: widget.people[index]);
-                  }))
+                  })),
+          Expanded(
+            child: ListView.builder(
+              itemCount: widget.people.length,
+              itemBuilder: (context, index) {
+                return Post(
+                  name: widget.people[index],
+                );
+              },
+            ),
+          )
         ],
       ),
     );

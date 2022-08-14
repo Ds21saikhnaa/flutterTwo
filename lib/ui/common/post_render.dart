@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Post extends StatefulWidget {
+class PostRender extends StatefulWidget {
   final String? name;
-  const Post({Key? key, this.name}) : super(key: key);
+  const PostRender({Key? key, this.name}) : super(key: key);
 
   @override
-  State<Post> createState() => _PostState();
+  State<PostRender> createState() => _PostRenderState();
 }
 
-class _PostState extends State<Post> {
+class _PostRenderState extends State<PostRender> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [

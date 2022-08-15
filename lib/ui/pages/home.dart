@@ -39,13 +39,14 @@ class _UserHomeState extends State<UserHome> {
         'Authorization': 'Bearer $accessToken',
       });
       posts = Map<String, dynamic>.from(jsonDecode(response.body));
-      print(posts);
+      print(posts["post"][0]["createUser"]["name"]);
       if (posts["success"] == true) {}
     } catch (e) {
       print("exception: ${e.toString()}");
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -80,10 +81,10 @@ class _UserHomeState extends State<UserHome> {
                   })),
           Expanded(
             child: ListView.builder(
-              itemCount: posts?.length,
+              itemCount: widget.people.length,
               itemBuilder: (context, index) {
                 return PostRender(
-                  name: posts![index].name,
+                  name: widget.people[index],
                 );
               },
             ),

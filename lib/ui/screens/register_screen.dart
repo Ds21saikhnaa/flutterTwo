@@ -6,6 +6,8 @@ import 'package:test/ui/common/my_button.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/utils/routes.dart';
+
+import '../../utils/sp_manager.dart';
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
@@ -27,6 +29,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           headers: {"Content-Type": "application/json"},
           body:
               jsonEncode({'email': email, 'name': name, 'password': password}));
+      var extractedData = Map<String, dynamic>.from(jsonDecode(response.body));
+      String confToken = extractedData['token'];
+      if (extractedData["success"] == true) {
+        SpManager sharedPreference = SpManager();
+        await sharedPreference.init();
+        sharedPreference.saveAccessToken(confToken);
+        // String accessToken = await sharedPreference.getAccessToken();
+        Get.offAllNamed(homeRoute);
+      }
     } catch (e) {
       print("exception: ${e.toString()}");
     }
@@ -51,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Image.asset("assets/images/Logo.png"),
               ),
               JustInput(
-                title: "Email or username",
+                title: "Email",
                 onChanged: (text) {
                   email = text;
                 },
@@ -67,6 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onChanged: (text) {
                   password = text;
                 },
+                isHidden: true,
               ),
               MyButton(
                 text: "Sign up",

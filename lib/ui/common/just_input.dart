@@ -7,12 +7,14 @@ class JustInput extends StatefulWidget {
   String? name;
   final Function(String)? onChanged;
   final TextInputType keyboardType;
+  final bool? isHidden;
   String? text;
   JustInput({
     Key? key,
     this.title,
     this.inVal,
     this.onChanged,
+    this.isHidden = false,
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
 //  const JustInput({Key? key}) : super(key: key);
@@ -66,6 +68,7 @@ class _JustInputState extends State<JustInput> {
                 keyboardType: TextInputType.text,
                 onChanged: widget.onChanged,
                 focusNode: _focusNode,
+                obscureText: widget.isHidden!,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: widget.title,

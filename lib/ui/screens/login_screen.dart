@@ -67,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (text) {
                   password = text;
                 },
+                isHidden: true,
               ),
               Container(
                 alignment: FractionalOffset.centerRight,

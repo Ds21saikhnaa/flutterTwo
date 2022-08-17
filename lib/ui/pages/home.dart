@@ -1,30 +1,32 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:test/services/remote_service.dart';
-// import 'package:flutter/src/foundation/key.dart';
-// import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/ui/common/post_render.dart';
-import 'package:test/models/posts_list.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/ui/common/stories.dart';
 import 'package:test/utils/sp_manager.dart';
+//import 'package:test/services/remote_service.dart';
+// import 'package:flutter/src/foundation/key.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+//import 'package:test/models/posts_list.dart';
 
 class UserHome extends StatefulWidget {
-  final List people = ["bat", "dorj", "dulmaa", "axio", "bileg", "tuya"];
+  final List people = ["bat", "bat", "test"];
   UserHome({Key? key, people}) : super(key: key);
 
   @override
   State<UserHome> createState() => _UserHomeState();
 }
 
-class _UserHomeState extends State<UserHome> {
+class _UserHomeState extends State<UserHome>
+    with AutomaticKeepAliveClientMixin<UserHome> {
+  @override
   var posts;
   var isLoaded = false;
-  @override
   void initState() {
-    super.initState();
+    print("object");
     getData();
+    super.initState();
   }
 
   void getData() async {
@@ -39,8 +41,10 @@ class _UserHomeState extends State<UserHome> {
         'Authorization': 'Bearer $accessToken',
       });
       posts = Map<String, dynamic>.from(jsonDecode(response.body));
-      print(posts["post"][0]["createUser"]["name"]);
-      if (posts["success"] == true) {}
+      if (posts["success"] == true) {
+        isLoaded = true;
+        setState(() {});
+      }
     } catch (e) {
       print("exception: ${e.toString()}");
     }
@@ -55,12 +59,12 @@ class _UserHomeState extends State<UserHome> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Instagram", style: TextStyle(color: Colors.black)),
+            const Text("Instagram", style: TextStyle(color: Colors.black)),
             Row(
               children: const [
                 Icon(Icons.add),
                 Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: EdgeInsets.all(24.0),
                   child: Icon(Icons.favorite),
                 ),
                 Icon(Icons.share),
@@ -75,22 +79,39 @@ class _UserHomeState extends State<UserHome> {
               height: 130,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
+                  //itemCount: posts?["post"].length,
                   itemCount: widget.people.length,
                   itemBuilder: (context, index) {
                     return Stories(name: widget.people[index]);
                   })),
           Expanded(
-            child: ListView.builder(
-              itemCount: widget.people.length,
-              itemBuilder: (context, index) {
-                return PostRender(
-                  name: widget.people[index],
-                );
-              },
+            child: Visibility(
+              visible: isLoaded,
+              replacement: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              child: ListView.builder(
+                itemCount: posts?["post"].length,
+                itemBuilder: (context, index) {
+                  return PostRender(
+                    // name: widget.people[index],
+                    // image: widget.people[index],
+                    name: posts["post"][index]["createUser"]["name"],
+                    image: posts["post"][index]["file"][0]["url"],
+                    //image: posts["post"][index]["file"],
+                    pro: posts["image"],
+                    comment: posts["post"][index]["comments"][0]["comment"],
+                    //data: posts
+                  );
+                },
+              ),
             ),
           )
         ],
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

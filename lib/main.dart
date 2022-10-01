@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        initialRoute: splashRoute,
+        initialRoute: homeRoute,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.grey),
         routes: <String, WidgetBuilder>{

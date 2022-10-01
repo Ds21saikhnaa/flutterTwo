@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:test/utils/routes.dart';
 import 'package:test/utils/sp_manager.dart';
@@ -21,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       await sharedPreference.init();
       String accessToken = await sharedPreference.getAccessToken();
       //sharedPreference.saveAccessToken("");
-      print("accessToken: $accessToken");
+      // print("accessToken: $accessToken");
       Get.offAllNamed(accessToken.isNotEmpty ? homeRoute : loginRoute);
     });
   }

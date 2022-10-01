@@ -11,7 +11,8 @@ class Search extends StatefulWidget {
   State<Search> createState() => _SearchState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchState extends State<Search>
+    with AutomaticKeepAliveClientMixin<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +42,10 @@ class _SearchState extends State<Search> {
           ),
         ),
       ),
-      body: ExploreGrid(),
+      body: const ExploreGrid(),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
